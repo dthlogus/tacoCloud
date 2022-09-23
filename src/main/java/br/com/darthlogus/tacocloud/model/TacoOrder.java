@@ -5,6 +5,11 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
@@ -14,12 +19,15 @@ import org.hibernate.validator.constraints.CreditCardNumber;
 import lombok.Data;
 
 @Data
+@Entity
 public class TacoOrder implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    @Id
     private Long id;
     private Date placedAt = new Date();
+    @Column(name = "customer_name")
     @NotBlank(message = "Delivery name is required")
     private String deliveryName;
     @NotBlank(message = "Street is required")
@@ -36,11 +44,11 @@ public class TacoOrder implements Serializable {
     private String ccExpiration;
     @Digits(integer = 3, fraction = 0, message = "Invalid CCV")
     private String ccCCV;
-
+    @OneToMany(cascade = CascadeType.ALL)
     private List<Taco> tacos = new ArrayList<>();
 
     public void addTaco(Taco taco) {
         tacos.add(taco);
     }
-    
+
 }
