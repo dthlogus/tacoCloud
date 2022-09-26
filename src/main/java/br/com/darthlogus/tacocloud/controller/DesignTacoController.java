@@ -19,6 +19,7 @@ import br.com.darthlogus.tacocloud.model.Ingredient;
 import br.com.darthlogus.tacocloud.model.Ingredient.Type;
 import br.com.darthlogus.tacocloud.model.Taco;
 import br.com.darthlogus.tacocloud.model.TacoOrder;
+import br.com.darthlogus.tacocloud.model.TacoUDT;
 import br.com.darthlogus.tacocloud.repository.IngredientRepository;
 import lombok.extern.slf4j.Slf4j;
 
@@ -61,19 +62,19 @@ public class DesignTacoController {
 
     @PostMapping
     public String processTaco(@Valid Taco taco, Errors errors, @ModelAttribute TacoOrder tacoOrder) {
-        if(errors.hasErrors()){
+        if (errors.hasErrors()) {
             return "/design";
         }
 
-        tacoOrder.addTaco(taco);
+        tacoOrder.addTaco(new TacoUDT(taco.getName(), taco.getIngredients()));
         log.info("Processing taco: {}", taco);
         return "redirect:/orders/current";
-    } 
+    }
 
     private Iterable<Ingredient> filterByType(Iterable<Ingredient> ingredients, Type type) {
         return StreamSupport.stream(ingredients.spliterator(), false)
                 .filter(x -> x.getType()
-                .equals(type))
+                        .equals(type))
                 .collect(Collectors.toList());
     }
 }
