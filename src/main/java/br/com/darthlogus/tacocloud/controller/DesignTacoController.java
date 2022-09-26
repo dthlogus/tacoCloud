@@ -19,7 +19,6 @@ import br.com.darthlogus.tacocloud.model.Ingredient;
 import br.com.darthlogus.tacocloud.model.Ingredient.Type;
 import br.com.darthlogus.tacocloud.model.Taco;
 import br.com.darthlogus.tacocloud.model.TacoOrder;
-import br.com.darthlogus.tacocloud.model.TacoUDT;
 import br.com.darthlogus.tacocloud.repository.IngredientRepository;
 import lombok.extern.slf4j.Slf4j;
 
@@ -66,7 +65,7 @@ public class DesignTacoController {
             return "/design";
         }
 
-        tacoOrder.addTaco(new TacoUDT(taco.getName(), taco.getIngredients()));
+        tacoOrder.addTaco(taco);
         log.info("Processing taco: {}", taco);
         return "redirect:/orders/current";
     }

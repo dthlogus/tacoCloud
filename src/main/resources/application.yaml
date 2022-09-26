@@ -3,9 +3,9 @@ server:
   port: "${SERVER_PORT}"
 spring:
   data:
-    cassandra:
-      keyspace-name: "${CASSANDRA_KEYSPACE}"
-      local-datacenter: "${CASSANDRA_DATACENTER}"
-      password: "${CASSANDRA_PASSWORD}"
-      schema-action: "${CASSANDRA_SCHEMA}"
-      username: "${CASSANDRA_USERNAME}"
+    mongodb:
+      host: "${MONGO_HOST}"
+      port: "${MONGO_PORT}"
+      username: "${MONGO_USERNAME}"
+      password: "${MONGO_PASSWORD}"
+      database: "${MONGO_DATABASE}"
