@@ -2,6 +2,12 @@ spring:
   datasource:
     generate-unique-name: false
     name: ${NOME_BANCO}
-
+  data:
+    cassandra:
+      keyspace-name: ${CASSANDRA_KEYSPACE}
+      schema-action: ${CASSANDRA_SCHEMA}
+      local-datacenter: ${CASSANDRA_DATACENTER}
+      username: ${CASSANDRA_USERNAME}
+      password: ${CASSANDRA_PASSWORD}
 server:
-  port: ${PORTA}
+  port: ${SERVER_PORT}
