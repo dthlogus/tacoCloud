@@ -1,13 +1,11 @@
+---
+server:
+  port: "${SERVER_PORT}"
 spring:
-  datasource:
-    generate-unique-name: false
-    name: ${NOME_BANCO}
   data:
     cassandra:
-      keyspace-name: ${CASSANDRA_KEYSPACE}
-      schema-action: ${CASSANDRA_SCHEMA}
-      local-datacenter: ${CASSANDRA_DATACENTER}
-      username: ${CASSANDRA_USERNAME}
-      password: ${CASSANDRA_PASSWORD}
-server:
-  port: ${SERVER_PORT}
+      keyspace-name: "${CASSANDRA_KEYSPACE}"
+      local-datacenter: "${CASSANDRA_DATACENTER}"
+      password: "${CASSANDRA_PASSWORD}"
+      schema-action: "${CASSANDRA_SCHEMA}"
+      username: "${CASSANDRA_USERNAME}"
