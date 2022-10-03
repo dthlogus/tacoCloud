@@ -2,10 +2,20 @@
 server:
   port: "${SERVER_PORT}"
 spring:
-  data:
-    mongodb:
-      host: "${MONGO_HOST}"
-      port: "${MONGO_PORT}"
-      username: "${MONGO_USERNAME}"
-      password: "${MONGO_PASSWORD}"
-      database: "${MONGO_DATABASE}"
+  h2:
+    console:
+      enabled: "${H2_ENABLE_CONSOLE}"
+      path: "${H2_PATH}"
+  datasource:
+    url: "${H2_URL}"
+    username: "${H2_USERNAME}"
+    password:
+    driverClassName: "${H2_DRIVER}"
+  security:
+    oauth2:
+      client:
+        registration:
+          facebook:
+            clientId: "${FB_CLIENTID}"
+            clientSecret: "${FB_CLIENTSECRET}"
+            scope: email, public_profile
