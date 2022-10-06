@@ -1,10 +1,7 @@
 package br.com.darthlogus.tacocloud.controller;
 
-import java.security.Principal;
-
 import javax.validation.Valid;
 
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
