@@ -1,16 +1,26 @@
 ---
 server:
   port: "${SERVER_PORT}"
+  ssl:
+    key-store: "${SERVER_KEY_STORE}"
+    key-store-password: "${SERVER_KEY_PASSWORD}"
+    key-password: "${SERVER_PASSWORD}"
+
 spring:
-  h2:
-    console:
-      enabled: "${H2_ENABLE_CONSOLE}"
-      path: "${H2_PATH}"
+  # h2:
+  #   console:
+  #     enabled: "${H2_ENABLE_CONSOLE}"
+  #     path: "${H2_PATH}"
+  # datasource:
+  #   url: "${H2_URL}"
+  #   username: "${H2_USERNAME}"
+  #   password:
+  #   driverClassName: "${H2_DRIVER}"
   datasource:
-    url: "${H2_URL}"
-    username: "${H2_USERNAME}"
-    password:
-    driverClassName: "${H2_DRIVER}"
+    url: "${SPRING_DATABASE}"
+    username: "${DATABASE_USERNAME}"
+    password: "${DATABASE_PASSWORD}"
+    driverClassName: "${DATABASE_DRIVER}"
   security:
     oauth2:
       client:
@@ -19,3 +29,19 @@ spring:
             clientId: "${FB_CLIENTID}"
             clientSecret: "${FB_CLIENTSECRET}"
             scope: email, public_profile
+  jpa:
+    database-platform: "${DATABASE_DIALECT}"
+    show_sql: "true"
+    hibernate:
+      ddl-auto: "update"
+#
+#logging:
+#  file:
+#    path: C:\Users\mathe\Documents\Estudos\taco-cloud\log
+#    file: tacoCloud.log
+#  level:
+#    root: WARN
+#    org:
+#      springframework:
+#        security: DEBUG
+#
